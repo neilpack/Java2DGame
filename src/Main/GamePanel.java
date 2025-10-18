@@ -1,6 +1,7 @@
 package Main;
 
 import entity.Player;
+import object.SuperObject;
 import tile.TileManager;
 
 import javax.swing.JPanel;
@@ -31,7 +32,9 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
+    public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this,keyH);
+    public SuperObject obj[] = new SuperObject[10]; //can display up to 10 objects at the same time
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -39,6 +42,9 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+    }
+    public void setupGame() {
+        aSetter.setObject();
     }
     public void startGameThread() {
         gameThread = new Thread(this);
@@ -80,7 +86,17 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);//whenever you use paint you need to type this
         Graphics2D g2 =  (Graphics2D) g;
 
+        //TILE
         tm.draw(g2); //we draw the tiles first before the player, so that way the player can walk over tiles
+
+        //OBJECT
+        for (int i = 0; i < obj.length; i++) {
+            if (obj[i] != null) {
+                obj[i].draw(g2, this);
+            }
+        }
+
+        //PLAYER
         player.draw(g2);
 
         g2.dispose(); //this is good practice to save memory
