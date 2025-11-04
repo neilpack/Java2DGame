@@ -34,8 +34,8 @@ public class Player extends Entity {
     }
     public void setDefaultValues() {
         //THE starting position
-        worldX = gp.tileSize * 7;
-        worldY = gp.tileSize * 45;
+        worldX = gp.tileSize * 25;
+        worldY = gp.tileSize * 25;
         speed = 4;
         direction = "down";
     }
@@ -72,6 +72,7 @@ public class Player extends Entity {
             if (spriteCounter > 12) {
                 if (spriteNum == 1) {
                     spriteNum = 2;
+                    gp.playSE(3); //when steps, play walking noise
                 }
                 else if (spriteNum == 2) {
                     spriteNum = 1;
@@ -100,24 +101,34 @@ public class Player extends Entity {
     }
     public void pickUpObject(int i) {
         if (i != 999) { //deletes object we just touched
+
             String objectName = gp.obj[i].name;
+
             switch (objectName) {
                 case "Key":
+                    gp.playSE(2);
                     hasKey++;
                     gp.obj[i] = null;
                     System.out.println("Key: "+hasKey); //could probably get rid of this later
                     break;
                 case "Door":
                     if (hasKey > 0) {
+                        gp.playSE(1);
                         gp.obj[i] = null;
                         hasKey--;
                     }
                     break;
                 case "Chest":
                     if (hasKey > 0) {
+                        gp.playSE(4);
                         gp.obj[i] = null;
                         hasKey--;
                     }
+                    break;
+                case "Sword":
+                    gp.playSE(2);
+                    speed += 2; //delete this later (makes player fast)
+                    gp.obj[i] = null;
                     break;
             }
         }
