@@ -13,7 +13,7 @@ public class Player extends Entity {
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    int hasKey = 0;
+    public int hasKey = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -33,7 +33,7 @@ public class Player extends Entity {
         getPlayerImage();
     }
     public void setDefaultValues() {
-        //THE starting position
+        //PLAYER START POSITION ----------------
         worldX = gp.tileSize * 25;
         worldY = gp.tileSize * 25;
         speed = 4;
@@ -109,13 +109,17 @@ public class Player extends Entity {
                     gp.playSE(2);
                     hasKey++;
                     gp.obj[i] = null;
-                    System.out.println("Key: "+hasKey); //could probably get rid of this later
+                    gp.ui.showMessage("You got a key");
                     break;
                 case "Door":
                     if (hasKey > 0) {
                         gp.playSE(1);
                         gp.obj[i] = null;
                         hasKey--;
+                        gp.ui.showMessage("You opened the door");
+                    }
+                    else {
+                        gp.ui.showMessage("You need a key");
                     }
                     break;
                 case "Chest":
@@ -123,13 +127,23 @@ public class Player extends Entity {
                         gp.playSE(4);
                         gp.obj[i] = null;
                         hasKey--;
+                        gp.ui.gameFinished = true;
+                        gp.stopMusic();
+                    } else {
+                        gp.ui.showMessage("You need a key");
                     }
                     break;
                 case "Sword":
                     gp.playSE(2);
-                    speed += 2; //delete this later (makes player fast)
+                    speed += 1; //delete this later (makes player fast)
                     gp.obj[i] = null;
+                    gp.ui.showMessage("You got a sword");
                     break;
+
+                    //end game scenario
+                    //gp.ui.gameFinished = true;
+                    //gp.stopMusic();
+                    //gp.playerSE(4);
             }
         }
     }
