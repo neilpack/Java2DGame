@@ -7,19 +7,19 @@ public class CollisionChecker {
     public CollisionChecker(GamePanel gp) {
         this.gp = gp;
     }
-    //private boolean tileBlocksMovement(int tileNum, Entity entity) {
-    //    // If it's water AND the player has the boots
-    //    if (tileNum == 2 && entity.hasBoots == 1) {
-    //        return false;
-    //    }
-    //
-    //    // Normal blocking tile
-    //    if (gp.tm.tile[tileNum].collision) {
-    //        return true;
-    //    }
-    //
-    //    return false;
-    //}
+    private boolean tileBlocksMovement(int tileNum) {
+        // If it's water AND the player has the boots
+        if (tileNum == 2 && gp.player.hasBoots == 1) {
+            return false;
+        }
+
+        // Normal blocking tile
+        if (gp.tm.tile[tileNum].collision) {
+            return true;
+        }
+
+        return false;
+    }
     public void checkTile(Entity entity) {
         int entityLeftWorldX = entity.worldX + entity.solidArea.x;
         int entityRightWorldX = entity.worldX + entity.solidArea.x + entity.solidArea.width;
@@ -38,33 +38,29 @@ public class CollisionChecker {
                 entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
                 tileNum1 = gp.tm.mapTileNum[entityLeftCol][entityTopRow];
                 tileNum2 = gp.tm.mapTileNum[entityRightCol][entityTopRow];
-                if (gp.tm.tile[tileNum1].collision || gp.tm.tile[tileNum2].collision) {
-                    entity.collisionOn = true;
-                }
+                //if (gp.tm.tile[tileNum1].collision || gp.tm.tile[tileNum2].collision) { entity.collisionOn = true; }
+                if (tileBlocksMovement(tileNum1) || tileBlocksMovement(tileNum2)) { entity.collisionOn = true; }
                 break;
             case "down":
                 entityBottomRow = (entityBottomWorldY + entity.speed)/gp.tileSize;
                 tileNum1 = gp.tm.mapTileNum[entityLeftCol][entityBottomRow];
                 tileNum2 = gp.tm.mapTileNum[entityRightCol][entityBottomRow];
-                if (gp.tm.tile[tileNum1].collision || gp.tm.tile[tileNum2].collision) {
-                    entity.collisionOn = true;
-                }
+                //if (gp.tm.tile[tileNum1].collision || gp.tm.tile[tileNum2].collision) { entity.collisionOn = true; }
+                if (tileBlocksMovement(tileNum1) || tileBlocksMovement(tileNum2)) { entity.collisionOn = true; }
                 break;
             case "left":
                 entityLeftCol = (entityLeftWorldX - entity.speed)/gp.tileSize;
                 tileNum1 = gp.tm.mapTileNum[entityLeftCol][entityTopRow];
                 tileNum2 = gp.tm.mapTileNum[entityLeftCol][entityBottomRow];
-                if (gp.tm.tile[tileNum1].collision || gp.tm.tile[tileNum2].collision) {
-                    entity.collisionOn = true;
-                }
+                //if (gp.tm.tile[tileNum1].collision || gp.tm.tile[tileNum2].collision) { entity.collisionOn = true; }
+                if (tileBlocksMovement(tileNum1) || tileBlocksMovement(tileNum2)) { entity.collisionOn = true; }
                 break;
             case "right":
                 entityRightCol = (entityRightWorldX + entity.speed)/gp.tileSize;
                 tileNum1 = gp.tm.mapTileNum[entityRightCol][entityTopRow];
                 tileNum2 = gp.tm.mapTileNum[entityRightCol][entityBottomRow];
-                if (gp.tm.tile[tileNum1].collision || gp.tm.tile[tileNum2].collision) {
-                    entity.collisionOn = true;
-                }
+                //if (gp.tm.tile[tileNum1].collision || gp.tm.tile[tileNum2].collision) { entity.collisionOn = true; }
+                if (tileBlocksMovement(tileNum1) || tileBlocksMovement(tileNum2)) { entity.collisionOn = true; }
                 break;
         }
     }
