@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import entity.Player;
 import object.SuperObject;

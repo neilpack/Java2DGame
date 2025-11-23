@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import entity.Entity;
 
@@ -7,6 +7,19 @@ public class CollisionChecker {
     public CollisionChecker(GamePanel gp) {
         this.gp = gp;
     }
+    //private boolean tileBlocksMovement(int tileNum, Entity entity) {
+    //    // If it's water AND the player has the boots
+    //    if (tileNum == 2 && entity.hasBoots == 1) {
+    //        return false;
+    //    }
+    //
+    //    // Normal blocking tile
+    //    if (gp.tm.tile[tileNum].collision) {
+    //        return true;
+    //    }
+    //
+    //    return false;
+    //}
     public void checkTile(Entity entity) {
         int entityLeftWorldX = entity.worldX + entity.solidArea.x;
         int entityRightWorldX = entity.worldX + entity.solidArea.x + entity.solidArea.width;

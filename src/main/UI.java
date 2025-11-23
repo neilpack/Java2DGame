@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import object.OBJ_Key;
 
@@ -58,7 +58,7 @@ public class UI {
             g2.drawString(text, x, y);
 
             g2.setFont(arial_80B);
-            g2.setColor(Color.RED);
+            g2.setColor(Color.CYAN);
             text = "Congratulations";
             textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength/2;

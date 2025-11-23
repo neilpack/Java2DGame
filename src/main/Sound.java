@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -15,6 +15,7 @@ public class Sound {
         soundURL[2] = getClass().getResource("/res/sound/pop.wav");
         soundURL[3] = getClass().getResource("/res/sound/walk.wav");
         soundURL[4] = getClass().getResource("/res/sound/door.wav");
+        soundURL[5] = getClass().getResource("/res/sound/win.wav");
     }
 
     public void setFile(int i) {

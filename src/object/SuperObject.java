@@ -1,7 +1,7 @@
 package object;
 //Parent class for all objects
 
-import Main.GamePanel;
+import main.GamePanel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

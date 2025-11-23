@@ -1,7 +1,7 @@
 package entity;
 
-import Main.GamePanel;
-import Main.KeyHandler;
+import main.GamePanel;
+import main.KeyHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,6 +14,7 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
     public int hasKey = 0;
+    public int hasBoots = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -127,8 +128,7 @@ public class Player extends Entity {
                         gp.playSE(4);
                         gp.obj[i] = null;
                         hasKey--;
-                        gp.ui.gameFinished = true;
-                        gp.stopMusic();
+                        gp.ui.showMessage("You opened the chest");
                     } else {
                         gp.ui.showMessage("You need a key");
                     }
@@ -139,11 +139,17 @@ public class Player extends Entity {
                     gp.obj[i] = null;
                     gp.ui.showMessage("You got a sword");
                     break;
-
-                    //end game scenario
-                    //gp.ui.gameFinished = true;
-                    //gp.stopMusic();
-                    //gp.playerSE(4);
+                case "Boots":
+                    gp.playSE(2);
+                    gp.obj[i] = null;
+                    hasBoots++;
+                    gp.ui.showMessage("You acquired Jesus Christ's Shoes");
+                    break;
+                case "Portal":
+                    gp.playSE(5);
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();
+                    break;
             }
         }
     }

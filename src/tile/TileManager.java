@@ -1,6 +1,7 @@
 package tile;
 
-import Main.GamePanel;
+import entity.Player;
+import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -45,6 +46,16 @@ public class TileManager {
 
             tile[5] = new Tile();
             tile[5].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/sand.png"));
+
+            tile[6] = new Tile();
+            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/void.png"));
+            tile[6].collision = true;
+
+            tile[7] = new Tile();
+            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/res/tiles/bush.png"));
+            tile[7].collision = true;
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
