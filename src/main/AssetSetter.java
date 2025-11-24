@@ -41,17 +41,25 @@ public class AssetSetter {
         //gp.obj[7].worldY = 28 * gp.tileSize;
 
         //ITEMS
-        //gp.obj[8] = new OBJ_Sword();
-        //gp.obj[8].worldX = 27 * gp.tileSize;
-        //gp.obj[8].worldY = 28 * gp.tileSize;
+        gp.obj[7] = new OBJ_Soup();
+        gp.obj[7].worldX = 39 * gp.tileSize;
+        gp.obj[7].worldY = 28 * gp.tileSize;
 
-        gp.obj[9] = new OBJ_Boots();
-        gp.obj[9].worldX = 40 * gp.tileSize;
-        gp.obj[9].worldY = 37 * gp.tileSize;
+        gp.obj[8] = new OBJ_Soup();
+        gp.obj[8].worldX = 37 * gp.tileSize;
+        gp.obj[8].worldY = 39 * gp.tileSize;
+
+        gp.obj[9] = new OBJ_Soup();
+        gp.obj[9].worldX = 8 * gp.tileSize;
+        gp.obj[9].worldY = 18 * gp.tileSize;
+
+        gp.obj[10] = new OBJ_Boots();
+        gp.obj[10].worldX = 40 * gp.tileSize;
+        gp.obj[10].worldY = 37 * gp.tileSize;
 
         //WIN SCENARIO
-        gp.obj[10] = new OBJ_Portal();
-        gp.obj[10].worldX = 35 * gp.tileSize;
-        gp.obj[10].worldY = 4 * gp.tileSize;
+        gp.obj[11] = new OBJ_Portal();
+        gp.obj[11].worldX = 35 * gp.tileSize;
+        gp.obj[11].worldY = 4 * gp.tileSize;
     }
 }

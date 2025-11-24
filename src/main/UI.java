@@ -84,7 +84,7 @@ public class UI {
                 g2.drawString(message, gp.tileSize/2, gp.tileSize*5);
 
                 messageCount++; //increases message counter
-                if (messageCount > 120) { //120 is two seconds
+                if (messageCount > 180) { //180 is three seconds
                     messageCount = 0;
                     messageOn = false;
                 }

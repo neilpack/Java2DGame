@@ -26,7 +26,7 @@ public class Player extends Entity {
         //solid box so there is
         //collision for the player
         //x, y, width, and, height
-        solidArea = new Rectangle(8, 16, 32, 32);
+        solidArea = new Rectangle(8, 16, 32, 32); //originally: 8 16 32 32
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -133,11 +133,11 @@ public class Player extends Entity {
                         gp.ui.showMessage("You need a key");
                     }
                     break;
-                case "Sword":
+                case "Soup":
                     gp.playSE(2);
-                    speed += 1; //delete this later (makes player fast)
+                    speed++; //increases player speed by one
                     gp.obj[i] = null;
-                    gp.ui.showMessage("You got a sword");
+                    gp.ui.showMessage("That was tasty! Speed boost!");
                     break;
                 case "Boots":
                     gp.playSE(2);
