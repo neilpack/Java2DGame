@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this,keyH);
-    public SuperObject obj[] = new SuperObject[15]; //can display up to 10 objects at the same time
+    public SuperObject obj[] = new SuperObject[14]; //can display up to 10 objects at the same time
     public UI ui = new UI(this);
     Thread gameThread;
 
@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
     @Override
     public void run() {
-        double drawInterval = 1000000000 / FPS; //we draw the screen every 0.01666 seconds
+        double drawInterval = 1000000000 / FPS; //we draw the screen every 0.01666 seconds (1000000000)
         double nextDrawTime = System.nanoTime() + drawInterval; //when timer hits target, then draw screen again
         while (gameThread != null) { //while the game thread exists then...
 

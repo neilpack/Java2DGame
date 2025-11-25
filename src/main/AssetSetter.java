@@ -35,31 +35,39 @@ public class AssetSetter {
         gp.obj[6].worldX = 28 * gp.tileSize;
         gp.obj[6].worldY = 3 * gp.tileSize;
 
-        //CHEST
+        //ITEMS
+        gp.obj[7] = new OBJ_Soup(); //right area soup
+        gp.obj[7].worldX = 39 * gp.tileSize;
+        gp.obj[7].worldY = 28 * gp.tileSize;
+
+        gp.obj[8] = new OBJ_Soup(); //hedge maze soup
+        gp.obj[8].worldX = 37 * gp.tileSize;
+        gp.obj[8].worldY = 39 * gp.tileSize;
+
+        gp.obj[9] = new OBJ_Soup(); //left marsh soup
+        gp.obj[9].worldX = 9 * gp.tileSize;
+        gp.obj[9].worldY = 27 * gp.tileSize;
+
+        gp.obj[10] = new OBJ_Soup(); //top castle soup
+        gp.obj[10].worldX = 20 * gp.tileSize;
+        gp.obj[10].worldY = 5 * gp.tileSize;
+
+        gp.obj[11] = new OBJ_Boots();
+        gp.obj[11].worldX = 40 * gp.tileSize;
+        gp.obj[11].worldY = 37 * gp.tileSize;
+
+        //CHEST & SIGN
         //gp.obj[7] = new OBJ_Chest();
         //gp.obj[7].worldX = 26 * gp.tileSize;
         //gp.obj[7].worldY = 28 * gp.tileSize;
 
-        //ITEMS
-        gp.obj[7] = new OBJ_Soup();
-        gp.obj[7].worldX = 39 * gp.tileSize;
-        gp.obj[7].worldY = 28 * gp.tileSize;
-
-        gp.obj[8] = new OBJ_Soup();
-        gp.obj[8].worldX = 37 * gp.tileSize;
-        gp.obj[8].worldY = 39 * gp.tileSize;
-
-        gp.obj[9] = new OBJ_Soup();
-        gp.obj[9].worldX = 8 * gp.tileSize;
-        gp.obj[9].worldY = 18 * gp.tileSize;
-
-        gp.obj[10] = new OBJ_Boots();
-        gp.obj[10].worldX = 40 * gp.tileSize;
-        gp.obj[10].worldY = 37 * gp.tileSize;
+        gp.obj[12] = new OBJ_Sign();
+        gp.obj[12].worldX = 14 * gp.tileSize;
+        gp.obj[12].worldY = 5 * gp.tileSize;
 
         //WIN SCENARIO
-        gp.obj[11] = new OBJ_Portal();
-        gp.obj[11].worldX = 35 * gp.tileSize;
-        gp.obj[11].worldY = 4 * gp.tileSize;
+        gp.obj[13] = new OBJ_Portal();
+        gp.obj[13].worldX = 34 * gp.tileSize;
+        gp.obj[13].worldY = 5 * gp.tileSize;
     }
 }

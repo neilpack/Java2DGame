@@ -8,10 +8,11 @@ import java.text.DecimalFormat;
 
 public class UI {
     GamePanel gp;
-    Font arial_40, arial_80B;
+    Font arial_40, arial_80B, arial_20;
     BufferedImage keyImage;
     public boolean messageOn = false;
     public String message = "";
+    public String subtitle = "";
     int messageCount = 0;
     public boolean gameFinished = false;
 
@@ -23,6 +24,7 @@ public class UI {
 
         arial_40 = new Font("Arial", Font.PLAIN, 40);
         arial_80B = new Font("Arial", Font.BOLD, 80);
+        arial_20 = new Font("Arial", Font.PLAIN, 20);
 
         OBJ_Key key = new OBJ_Key();
         keyImage = key.image;
@@ -30,6 +32,10 @@ public class UI {
 
     public void showMessage(String text) {
         message = text;
+        messageOn = true;
+    }
+    public void showSubtitle (String text) {
+        subtitle = text;
         messageOn = true;
     }
     public void draw(Graphics2D g2) {
@@ -76,12 +82,14 @@ public class UI {
 
             //TIME
             playTime +=(double)1/60; //adds fraction 1/60 every frame, so 60 a second
-            g2.drawString("Time: "+dFormat.format(playTime), gp.tileSize*11, 65);
+            g2.setFont(arial_20);
+            g2.drawString("Time: "+dFormat.format(playTime), gp.tileSize*13, gp.tileSize*11); //tilesize*11 65
 
             //MESSAGE
             if (messageOn) {
                 g2.setFont(g2.getFont().deriveFont(30F));
                 g2.drawString(message, gp.tileSize/2, gp.tileSize*5);
+                g2.drawString(subtitle, gp.tileSize/2, gp.tileSize*6);
 
                 messageCount++; //increases message counter
                 if (messageCount > 180) { //180 is three seconds

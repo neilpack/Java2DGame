@@ -26,7 +26,7 @@ public class Player extends Entity {
         //solid box so there is
         //collision for the player
         //x, y, width, and, height
-        solidArea = new Rectangle(8, 16, 32, 32); //originally: 8 16 32 32
+        solidArea = new Rectangle(8, 16, 30, 30); //originally: 8 16 32 32
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -57,18 +57,19 @@ public class Player extends Entity {
     public void update() {
 
         if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
-            if (keyH.upPressed) {
-                direction = "up";
-            }
-            else if (keyH.downPressed) {
-                direction = "down";
-            }
-            else if (keyH.leftPressed) {
-                direction = "left";
-            }
-            else if (keyH.rightPressed){
-                direction = "right";
-            }
+            direction = keyH.lastDirection;
+            //if (keyH.upPressed) {
+            //    direction = "up";
+            //}
+            //if (keyH.downPressed) {
+            //    direction = "down";
+            //}
+            //if (keyH.leftPressed) {
+            //    direction = "left";
+            //}
+            //if (keyH.rightPressed){
+            //    direction = "right";
+            //}
             spriteCounter++;
             if (spriteCounter > 12) {
                 if (spriteNum == 1) {
@@ -105,6 +106,10 @@ public class Player extends Entity {
 
             String objectName = gp.obj[i].name;
 
+            //reset ui messages
+            gp.ui.showMessage("");
+            gp.ui.showSubtitle("");
+
             switch (objectName) {
                 case "Key":
                     gp.playSE(2);
@@ -132,6 +137,10 @@ public class Player extends Entity {
                     } else {
                         gp.ui.showMessage("You need a key");
                     }
+                    break;
+                case "Sign":
+                    gp.ui.showMessage("Ancient Chinese Proverb: Trees without apples,");
+                    gp.ui.showSubtitle("straight up don't exist");
                     break;
                 case "Soup":
                     gp.playSE(2);
