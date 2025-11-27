@@ -54,51 +54,53 @@ public class Player extends Entity {
             e.printStackTrace();
         }
     }
+    public void useMovement() { //this uses keyhandler for movement
+        spriteCounter++;
+        if (spriteCounter > 12) {
+            if (spriteNum == 1) {
+                spriteNum = 2;
+                gp.playSE(3); //when steps, play walking noise
+            }
+            else if (spriteNum == 2) {
+                spriteNum = 1;
+            }
+            spriteCounter = 0;
+        }
+
+        //CHECK TILE COLLISION
+        collisionOn = false;
+        gp.cChecker.checkTile(this);
+
+        //CHECK OBJECT COLLISION
+        int objIndex = gp.cChecker.checkObject(this, true);
+        pickUpObject(objIndex);
+
+        //IF COLLISION IS FALSE, PLAYER CAN MOVE
+        if (!collisionOn) {
+            switch (direction) {
+                case "up": worldY -= speed; break;
+                case "down": worldY += speed; break;
+                case "left": worldX -= speed; break;
+                case "right": worldX += speed; break;
+            }
+        }
+    }
     public void update() {
-
-        if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
-            direction = keyH.lastDirection;
-            //if (keyH.upPressed) {
-            //    direction = "up";
-            //}
-            //if (keyH.downPressed) {
-            //    direction = "down";
-            //}
-            //if (keyH.leftPressed) {
-            //    direction = "left";
-            //}
-            //if (keyH.rightPressed){
-            //    direction = "right";
-            //}
-            spriteCounter++;
-            if (spriteCounter > 12) {
-                if (spriteNum == 1) {
-                    spriteNum = 2;
-                    gp.playSE(3); //when steps, play walking noise
-                }
-                else if (spriteNum == 2) {
-                    spriteNum = 1;
-                }
-                spriteCounter = 0;
-            }
-
-            //CHECK TILE COLLISION
-            collisionOn = false;
-            gp.cChecker.checkTile(this);
-
-            //CHECK OBJECT COLLISION
-            int objIndex = gp.cChecker.checkObject(this, true);
-            pickUpObject(objIndex);
-
-            //IF COLLISION IS FALSE, PLAYER CAN MOVE
-            if (!collisionOn) {
-                switch (direction) {
-                    case "up": worldY -= speed; break;
-                    case "down": worldY += speed; break;
-                    case "left": worldX -= speed; break;
-                    case "right": worldX += speed; break;
-                }
-            }
+        if (keyH.upPressed) {
+            direction = "up";
+            useMovement();
+        }
+        if (keyH.downPressed) {
+            direction = "down";
+            useMovement();
+        }
+        if (keyH.leftPressed) {
+            direction = "left";
+            useMovement();
+        }
+        if (keyH.rightPressed){
+            direction = "right";
+            useMovement();
         }
     }
     public void pickUpObject(int i) {
