@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed;
 
-    // public String lastDirection = null;
+    // public String lastDirection = null; i like bread
 
     //new key handler movement so we can gather last key pressed down
     // use this in player for this movement direction = keyH.lastDirection;
